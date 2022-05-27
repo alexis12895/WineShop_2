@@ -7,6 +7,7 @@ import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,7 @@ class TypeController {
 
 
     @PostMapping("/type")
-    ResponseEntity<?> newType(@RequestBody Type newType) {
+    ResponseEntity<?> newType(@Valid @RequestBody Type newType) {
 
         EntityModel<Type> entityModel = assembler.toModel(repository.save(newType));
 
@@ -60,7 +61,7 @@ class TypeController {
 
     /*Añadir repository*/
     @PutMapping("/type/{id}")
-    ResponseEntity<?> replaceType(@RequestBody Type newType, @PathVariable Long id) {
+    ResponseEntity<?> replaceType(@Valid @RequestBody Type newType, @PathVariable Long id) {
 
         Type updatedType = repository.findById(id) //
                 .map(type -> {

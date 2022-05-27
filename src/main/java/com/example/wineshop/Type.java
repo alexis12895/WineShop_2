@@ -3,13 +3,17 @@ package com.example.wineshop;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
 public class Type {
 
+    @NotEmpty
     private @Id @GeneratedValue Long id;
 
+    @NotEmpty
     private String name;
 
     public Type(String name) {

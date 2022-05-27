@@ -4,14 +4,19 @@ import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 @Entity
 public class Winery {
 
+    @NotEmpty
     private @Id @GeneratedValue Long id;
 
+    @NotEmpty
     private String name;
+
+    @NotEmpty
 
     public Winery(String name) {
         this.name = name;

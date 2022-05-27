@@ -7,6 +7,7 @@ import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,7 +31,7 @@ class RegionController {
 
     /*Falta ensamblador*/
     @PostMapping("/region")
-    ResponseEntity<?> newRegion(@RequestBody Region newRegion) {
+    ResponseEntity<?> newRegion(@Valid @RequestBody Region newRegion) {
 
         EntityModel<Region> entityModel = assembler.toModel(repository.save(newRegion));
 
@@ -61,7 +62,7 @@ class RegionController {
 
     /*Añadir repository*/
     @PutMapping("/region/{id}")
-    ResponseEntity<?> replaceRegion(@RequestBody Region newRegion, @PathVariable Long id) {
+    ResponseEntity<?> replaceRegion(@Valid @RequestBody Region newRegion, @PathVariable Long id) {
 
         Region updatedRegion = repository.findById(id) //
                 .map(type -> {

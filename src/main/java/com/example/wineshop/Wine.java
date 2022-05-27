@@ -1,31 +1,54 @@
 package com.example.wineshop;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Wine {
 
-    private @Id @GeneratedValue Long id;
+    @NotEmpty
+    private @Id @GeneratedValue  Long id;
+
+    @NotEmpty
     private @ManyToOne @JoinColumn(name = "winery") Winery winery;
+
+    @NotEmpty
+    @Range(min=1900, max=2022)
     private int year;
+
+    @NotEmpty
+    @Range(min=0)
     private double num_reviews;
 
+    @NotEmpty
     private @ManyToOne @JoinColumn(name = "region") Region region;
 
+    @NotEmpty
+    @Range(min=0)
     private double price;
 
+    @NotEmpty
     private @ManyToOne @JoinColumn(name = "type") Type type;
 
+    @NotEmpty
+    @Range(min=1, max=5)
     private int body;
 
+    @NotEmpty
+    @Range(min=1, max=5)
     private int acidity;
 
+    @NotEmpty
+    @Range(min=0, max=5)
     private double rating;
 
+    @NotEmpty
     private String name;
 
     public Wine() {}

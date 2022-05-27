@@ -1,16 +1,21 @@
 package com.example.wineshop;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 
 @Entity
 public class Region {
 
+    @NotEmpty
     private @Id @GeneratedValue Long id;
 
+    @NotEmpty
     private String nameRegion;
 
+    @NotEmpty
     private String country;
 
     public Region(String nameRegion, String country) {

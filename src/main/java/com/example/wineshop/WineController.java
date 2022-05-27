@@ -7,6 +7,7 @@ import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,7 @@ class WineController {
     }
 
     @PostMapping("/wine")
-    ResponseEntity<?> newWine(@RequestBody Wine newWine) {
+    ResponseEntity<?> newWine(@Valid @RequestBody Wine newWine) {
 
         EntityModel<Wine> entityModel = assembler.toModel(repository.save(newWine));
 
@@ -61,7 +62,7 @@ class WineController {
     }
 
     @PutMapping("/wine/{id}")
-    ResponseEntity<?> replaceWine(@RequestBody Wine newWine, @PathVariable Long id) {
+    ResponseEntity<?> replaceWine(@Valid @RequestBody Wine newWine, @PathVariable Long id) {
 
         Wine updatedEmployee = repository.findById(id) //
                 .map(wine -> {
