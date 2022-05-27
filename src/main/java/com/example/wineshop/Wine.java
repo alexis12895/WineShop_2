@@ -12,39 +12,39 @@ import java.util.Objects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Wine {
 
-    @NotEmpty
+    @NotNull
     private @Id @GeneratedValue  Long id;
 
-    @NotEmpty
+    @NotNull
     private @ManyToOne @JoinColumn(name = "winery") Winery winery;
 
-    @NotEmpty
+    @NotNull
     @Range(min=1900, max=2022)
     private int year;
 
-    @NotEmpty
+    @NotNull
     @Range(min=0)
     private double num_reviews;
 
-    @NotEmpty
+    @NotNull
     private @ManyToOne @JoinColumn(name = "region") Region region;
 
-    @NotEmpty
+    @NotNull
     @Range(min=0)
     private double price;
 
-    @NotEmpty
+    @NotNull
     private @ManyToOne @JoinColumn(name = "type") Type type;
 
-    @NotEmpty
+    @NotNull
     @Range(min=1, max=5)
     private int body;
 
-    @NotEmpty
+    @NotNull
     @Range(min=1, max=5)
     private int acidity;
 
-    @NotEmpty
+    @NotNull
     @Range(min=0, max=5)
     private double rating;
 

@@ -9,7 +9,7 @@ import java.util.Objects;
 @Entity
 public class Region {
 
-    @NotEmpty
+    @NotNull
     private @Id @GeneratedValue Long id;
 
     @NotEmpty

@@ -10,7 +10,7 @@ import java.util.Objects;
 @Entity
 public class Type {
 
-    @NotEmpty
+    @NotNull
     private @Id @GeneratedValue Long id;
 
     @NotEmpty
