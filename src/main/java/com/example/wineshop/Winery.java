@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.util.Objects;
 
 @Entity
@@ -14,7 +15,7 @@ public class Winery {
     @NotNull
     private @Id @GeneratedValue Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "el campo no puede ser nulo ni vacio")
     private String name;
 
 
@@ -25,7 +26,6 @@ public class Winery {
     public Winery() {
 
     }
-
 
     public Long getId() {
         return id;

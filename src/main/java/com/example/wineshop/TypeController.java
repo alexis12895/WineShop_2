@@ -27,8 +27,6 @@ class TypeController {
     }
 
 
-
-
     @PostMapping("/type")
     ResponseEntity<?> newType(@Valid @RequestBody Type newType) {
 
@@ -59,7 +57,6 @@ class TypeController {
         return assembler.toModel(type);
     }
 
-    /*Añadir repository*/
     @PutMapping("/type/{id}")
     ResponseEntity<?> replaceType(@Valid @RequestBody Type newType, @PathVariable Long id) {
 
@@ -88,6 +85,5 @@ class TypeController {
 
         return ResponseEntity.noContent().build();
     }
-
 
 }

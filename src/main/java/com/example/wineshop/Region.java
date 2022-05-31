@@ -12,10 +12,10 @@ public class Region {
     @NotNull
     private @Id @GeneratedValue Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "el campo no puede ser nulo ni vacio")
     private String nameRegion;
 
-    @NotEmpty
+    @NotEmpty(message = "el campo no puede ser nulo ni vacio")
     private String country;
 
     public Region(String nameRegion, String country) {

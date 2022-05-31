@@ -20,16 +20,12 @@ class RegionController {
     private final RegionRepository repository;
     private final RegionModelAssembler assembler;
 
-    /*Meter repository y assembler*/
     RegionController(RegionRepository repository, RegionModelAssembler assembler) {
 
         this.repository = repository;
         this.assembler = assembler;
     }
 
-
-
-    /*Falta ensamblador*/
     @PostMapping("/region")
     ResponseEntity<?> newRegion(@Valid @RequestBody Region newRegion) {
 
@@ -50,7 +46,6 @@ class RegionController {
         return CollectionModel.of(type, linkTo(methodOn(RegionController.class).all()).withSelfRel());
     }
 
-    /*Revisar excepcion*/
     @GetMapping("/region/{id}")
     EntityModel<Region> one(@PathVariable Long id) {
 
@@ -60,7 +55,6 @@ class RegionController {
         return assembler.toModel(region);
     }
 
-    /*Añadir repository*/
     @PutMapping("/region/{id}")
     ResponseEntity<?> replaceRegion(@Valid @RequestBody Region newRegion, @PathVariable Long id) {
 

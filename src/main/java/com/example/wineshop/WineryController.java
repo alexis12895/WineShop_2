@@ -28,8 +28,6 @@ class WineryController {
     }
 
 
-
-    /*Crear ensamblador*/
     @PostMapping("/winery")
     ResponseEntity<?> newWinery(@Valid @RequestBody Winery newWinery) {
 
@@ -60,7 +58,7 @@ class WineryController {
         return assembler.toModel(winery);
     }
 
-    /*Añadir repository*/
+
     @PutMapping("/winery/{id}")
     ResponseEntity<?> replaceWinery(@Valid @RequestBody Winery newWinery, @PathVariable Long id) {
 

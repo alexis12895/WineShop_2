@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
@@ -19,36 +20,36 @@ public class Wine {
     private @ManyToOne @JoinColumn(name = "winery") Winery winery;
 
     @NotNull
-    @Range(min=1900, max=2022)
+    @Range(max = 2022,min = 1900)
     private int year;
 
     @NotNull
-    @Range(min=0)
+    @Min(0)
     private double num_reviews;
 
     @NotNull
     private @ManyToOne @JoinColumn(name = "region") Region region;
 
     @NotNull
-    @Range(min=0)
+    @Min(0)
     private double price;
 
     @NotNull
     private @ManyToOne @JoinColumn(name = "type") Type type;
 
     @NotNull
-    @Range(min=1, max=5)
+    @Range(max = 5,min = 1)
     private int body;
 
     @NotNull
-    @Range(min=1, max=5)
+    @Range(max = 5,min = 1)
     private int acidity;
 
     @NotNull
-    @Range(min=0, max=5)
+    @Range(max = 5,min = 0)
     private double rating;
 
-    @NotEmpty
+    @NotEmpty(message = "el campo no puede ser nulo ni vacio")
     private String name;
 
     public Wine() {}

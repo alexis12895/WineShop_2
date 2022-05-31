@@ -26,7 +26,7 @@ class WineController {
         this.assembler = assembler;
     }
 
-
+    //Se usa para la autentificacion basica
     @GetMapping("/")
     public String index() {
         return "¡Acceso concedido!";
@@ -97,6 +97,37 @@ class WineController {
         repository.deleteById(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+
+    /*Recomendations*/
+    @GetMapping("/recommend/best")
+    List<Wine> best(@RequestParam(name="top", required=true, defaultValue="10") Integer top)  {
+        return repository.findTop(top)
+                .stream()
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/recommend/expensive")
+    List<Wine> pricesTop(@RequestParam(name="top", required=true, defaultValue="10") Integer top) {
+        return repository.findPricesWines(top)
+                .stream()
+                .collect(Collectors.toList());
+    }
+
+
+    @GetMapping("/recommend/bang")
+    List<Wine> bangWines(@RequestParam(name="top", required=true, defaultValue="10") Integer top) {
+        return repository.findRatingWines(top)
+                .stream()
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/recommend/vintage")
+    List<Wine> vintageWines(@RequestParam(name="top", required=true, defaultValue="10") Integer top) {
+        return repository.findOldWines(top)
+                .stream()
+                .collect(Collectors.toList());
     }
 
 

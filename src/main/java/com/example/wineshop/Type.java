@@ -13,9 +13,10 @@ public class Type {
     @NotNull
     private @Id @GeneratedValue Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "el campo no puede ser nulo ni vacio")
     private String name;
 
+    @NotNull
     public Type(String name) {
         this.name = name;
     }
